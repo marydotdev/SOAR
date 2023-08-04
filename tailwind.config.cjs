@@ -9,10 +9,12 @@ module.exports = {
 			},
 			colors: {
 				svelte: '#FF3E00',
-				tw: '#06B6D4'
+				tw: '#06B6D4',
+        soar: '#e61d26'
 			},
 			fontFamily: {
-				spacemono: ['Space Mono', 'monospace']
+				spacemono: ['Space Mono', 'monospace'],
+        cabin: ['Cabin Sketch', 'cursive']
 			}
 		}
 	},
