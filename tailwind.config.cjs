@@ -5,7 +5,8 @@ module.exports = {
 		extend: {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'dot-grid': 'url(https://www.toptal.com/designers/subtlepatterns/uploads/dot-grid.png)'
+				'dot-grid': 'url(https://www.toptal.com/designers/subtlepatterns/uploads/dot-grid.png)',
+        'grid': 'url(https://www.transparenttextures.com/patterns/paper-fibers.png)'
 			},
 			colors: {
 				svelte: '#FF3E00',

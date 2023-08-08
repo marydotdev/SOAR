@@ -10,6 +10,7 @@
   $: currentPage = Number($page.params.page)
   $: visiblePages = calculateVisiblePages(currentPage, totalPages, 4);
 
+  console.log(data);
   /**
 	 * @param {number} currentPage
 	 * @param {number} totalPages
@@ -49,68 +50,102 @@
 
 <div class="relative mx-auto">
 	<div class="hero">
-		<div class="relative max-w-4xl mx-auto w-full flex justify-center pt-12">
+		<!-- <div class="relative max-w-4xl mx-auto w-full flex justify-center pt-12">
 			<div>
 				<h1 class="text-4xl sm:text-7xl font-bold text-center">ORCA H.I.T. LIST</h1>
 			</div>
+		</div> -->
+    <div class="relative max-w-4xl mx-auto w-full flex justify-center pt-12">
+			<div>
+				<h1 class="text-4xl sm:text-7xl font-bold text-center">World Billionaire Index</h1>
+			</div>
 		</div>
 
-		<div class="max-w-6xl mx-auto py-8">
+		<!-- <div class="max-w-6xl mx-auto py-8">
 			<p class="text-xl text-justify">
 				The Orca H.I.T. (High Income Targets) List is intended for academic research purposes only
 				and has been compiled by S.O.A.R (Socialist Orcas Against Ramming) in order to support
 				efforts to reduce wealth inequality around the world. S.O.A.R is against yacht ramming and
 				firmly condemns all acts of violence against human property and means of transportation.
 			</p>
-		</div>
+		</div> -->
 	</div>
 
 	<div class="max-w-6xl mx-auto">
 		{#if billionaires}
-			<ul class="text-xl grid grid-cols-4 gap-4">
+			<ul class="text-xl grid grid-cols-2 py-12 gap-x-12 gap-y-12">
 				{#each billionaires as billionaire}
-					<li class="border-2 border-blue-300">
-						<div class="flex flex-col items-center gap-2">
-							<div class="flex justify-between">
+					<a href={`/billionaire/${billionaire.person.uri}`} class="">
+            <li class="bg-white hover:shadow-lg hover:scale-[1.05] transition-all duration-200 ease-in-out">
+              <div class="w-full h-full flex items-start gap-2">
+                <div class="flex justify-between">
+                  <div class="w-48 h-48 isolate">
+                    <div class="absolute z-10">
+                      <p class="w-fit min-w-[3rem] h-12 text-center text-white drop-shadow-lg backdrop-brightness-50 text-4xl font-serif">{billionaire.rank}</p>
+                    </div>
+                    <div class="relative">
+                      {#if billionaire.person.squareImage}
+                        <img
+                          src={billionaire.person.squareImage}
+                          alt={billionaire.person.name}
+                          class="w-full"
+                        />
+                      {:else if billionaire.squareImage}
+                        <img
+                          src={billionaire.squareImage}
+                          alt={billionaire.person.name}
+                          class="w-full"
+                        />
+                      {:else if billionaire.thumbnail}
+                        <img
+                          src={billionaire.thumbnail}
+                          alt={billionaire.person.name}
+                          class="w-full"
+                        />
+                      {:else}
+                        <div class="w-48 h-48 bg-gray-900" />
+                      {/if}
+                      </div>
+                  </div>
+                </div>
+                <div class="w-full h-48 p-4 flex flex-col justify-between">
+                  <div class="w-full h-full flex justify-between">
+                    <div>
+                      <h3 class="text-2xl">{billionaire.person.name}</h3>
+                      <p class="text-sm uppercase">{billionaire.source}</p>
+                      <p>
+                        {#if (billionaire.city && billionaire.state)}
+                          <span>{billionaire.city},</span>
+                          {:else if (!billionaire.city)}
+                          <span></span>
+                          {:else}
+                            <span>{billionaire.city}</span>
+                        {/if}
+                        {#if (billionaire.state)}
+                          <span>{billionaire.state}</span>
+                        {:else if (!billionaire.state)}
+                          <span></span>
+                        {/if}
+                      </p>
+                    </div>
 
-								<div class="w-48 h-48">
-									{#if billionaire.person.squareImage}
-										<img
-											src={billionaire.person.squareImage}
-											alt={billionaire.person.name}
-											class="w-full"
-										/>
-									{:else if billionaire.squareImage}
-                    <img
-											src={billionaire.squareImage}
-											alt={billionaire.person.name}
-											class="w-full"
-										/>
-                  {:else}
-										<div class="w-24 h-24 bg-blue-800" />
-									{/if}
-								</div>
-							</div>
-							<div class="border-2 border-black w-full h-full">
-								<div>
-									<h3 class="text-2xl text-center">{billionaire.person.name}</h3>
-									<p>{billionaire.source}</p>
-								</div>
-								<div>
-									<h3>{formatter.format(billionaire.finalWorth * 1000000)}</h3>
-								</div>
-								<div>
-									<h3>{billionaire.countryOfCitizenship}</h3>
-								</div>
-							</div>
-						</div>
-					</li>
+                    <div>
+                      <h3 class="text-2xl">{formatter.format(billionaire.finalWorth * 1000000)}</h3>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="text-right">{billionaire.countryOfCitizenship}</h3>
+                  </div>
+                  </div>
+              </div>
+            </li>
+          </a>
 				{/each}
 			</ul>
 		{/if}
 
 		<div class="w-full flex justify-center py-8">
-			<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+			<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm bg-white" aria-label="Pagination">
 				<a
 					href={`${currentPage - 1}`}
 					class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"

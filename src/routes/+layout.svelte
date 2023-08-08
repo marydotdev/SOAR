@@ -22,8 +22,10 @@
       </div>
     </div>
   </div>
-  <slot />
-  <footer class="mt-12 border-t-2 border-black px-4 py-2 sm:py-6">
+  <div class="bg-grid">
+    <slot />
+  </div>
+  <footer class="border-t-2 border-black px-4 py-2 sm:py-6">
       <div class="max-w-6xl mx-auto flex justify-between items-center">
         <div class="max-w-2xl">
           <div class="text-xl font-semibold">
