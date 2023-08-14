@@ -7,12 +7,12 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Socialist Orcas Against Ramming - SOAR" />
 <meta name="twitter:description" content="SOAR H.I.T. List" />
-<meta name="twitter:image" content="/SOARcard.png" />
+<meta name="twitter:image" content="https://soar.yachts/static/SOARcard.png" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Socialist Orcas Against Ramming - SOAR" />
 <meta property="og:description" content="SOAR H.I.T. List" />
-<meta property="og:url" content="https://soar.vercel.app" />
-<meta property="og:image" content="/SOARcard.png" />
+<meta property="og:url" content="https://soar.yachts" />
+<meta property="og:image" content="https://soar.yachts/static/SOARcard.png" />
 </svelte:head>
 <div class="w-full">
   <div class="border-b-2 border-black px-4 py-2 sm:py-6">
