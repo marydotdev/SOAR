@@ -1,18 +1,8 @@
-# SvelteKit Tailwind Starter
+![SOAR](/static/SOARcard.png)
 
-Everything you need to build a SvelteKit project, preconfigured with TailwindCSS plugins.
+# Socialist Orcas Against Ramming
 
-## Skip the Setup
-
-Save time and use this template to get up and running quickly. A skeleton SvelteKit project with Tailwind configured and extended for easy font and color customization.
-
-The official Tailwind Forms, Line Clamp, and Typography plug-ins have already been installed. To remove a plug-in, run:
-
-```bash
-# replace with the right plugin name
-npm uninstall @tailwindcss/plugin -D
-
-```
+SOAR (Socialist Orcas Against Ramming) is a fictional organization inspired by recent maritime events. The Orca H.I.T List data is sourced from the Forbes Real Time Billionaires and Annual World Billionaires lists.
 
 ## Developing
 
