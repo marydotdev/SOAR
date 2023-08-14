@@ -2,6 +2,18 @@
 	import '../app.css';
 	import Soar from '$lib/Soar.svelte';
 </script>
+
+<svelte:head>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Socialist Orcas Against Ramming - SOAR" />
+<meta name="twitter:description" content="SOAR H.I.T. List" />
+<meta name="twitter:image" content="/SOARcard.png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Socialist Orcas Against Ramming - SOAR" />
+<meta property="og:description" content="SOAR H.I.T. List" />
+<meta property="og:url" content="https://soar.vercel.app" />
+<meta property="og:image" content="/SOARcard.png" />
+</svelte:head>
 <div class="w-full">
   <div class="border-b-2 border-black px-4 py-2 sm:py-6">
       <div class="max-w-6xl mx-auto flex justify-between items-center">

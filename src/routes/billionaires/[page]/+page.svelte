@@ -1,6 +1,22 @@
 <script>
   export let data;
   import { page } from '$app/stores';
+  import { onMount } from 'svelte';
+
+  let searchTerm = '';
+  let searchedBillionaires = [];
+
+  async function fetchData() {
+    const res = await fetch(`/api/searchBillionaires?search=${searchTerm}`);
+    const data = await res.json();
+    searchedBillionaires = data.personList.personsLists;
+  }
+
+  onMount(fetchData); // Load data on component mount
+
+  function handleSearch() {
+    fetchData(); // Re-fetch data when search term changes
+  }
 
   const totalItems = data.totalBillionaires;
   const totalPages = Math.ceil(totalItems / 10);
@@ -50,16 +66,19 @@
 
 <div class="relative mx-auto">
 	<div class="hero">
-		<!-- <div class="relative max-w-4xl mx-auto w-full flex justify-center pt-12">
-			<div>
+		<div class="relative max-w-4xl mx-auto w-full flex justify-center pt-12">
+			<!-- <div>
 				<h1 class="text-4xl sm:text-7xl font-bold text-center">ORCA H.I.T. LIST</h1>
+			</div> -->
+      <div>
+				<h1 class="text-4xl sm:text-7xl font-bold text-center">DO NOT RAM</h1>
 			</div>
-		</div> -->
-    <div class="relative max-w-4xl mx-auto w-full flex justify-center pt-12">
+		</div>
+    <!-- <div class="relative max-w-4xl mx-auto w-full flex justify-center pt-12">
 			<div>
 				<h1 class="text-4xl sm:text-7xl font-bold text-center">World Billionaire Index</h1>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- <div class="max-w-6xl mx-auto py-8">
 			<p class="text-xl text-justify">
@@ -71,12 +90,20 @@
 		</div> -->
 	</div>
 
+
 	<div class="max-w-6xl mx-auto">
+    <!-- <div class="max-w-xl mx-auto">
+      <div class="relative mt-2 flex items-center gap-2">
+        <input type="text" bind:value={searchTerm} placeholder="Search by name..." name="search" id="search" class="block w-full rounded-md border-0 py-3 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-lg sm:leading-6">
+
+        <button on:click={handleSearch} type="button" class="rounded-md bg-indigo-600 px-3 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Search</button>
+      </div>
+    </div> -->
 		{#if billionaires}
-			<ul class="text-xl grid grid-cols-2 py-12 gap-x-12 gap-y-12">
+			<ul class="text-xl grid grid-cols-1 lg:grid-cols-2 px-2 py-12 gap-x-12 gap-y-12">
 				{#each billionaires as billionaire}
 					<a href={`/billionaire/${billionaire.person.uri}`} class="">
-            <li class="bg-white hover:shadow-lg hover:scale-[1.05] transition-all duration-200 ease-in-out">
+            <li class="max-w-2xl mx-auto bg-white hover:shadow-lg sm:hover:scale-[1.05] transition-all duration-200 ease-in-out">
               <div class="w-full h-full flex items-start gap-2">
                 <div class="flex justify-between">
                   <div class="w-48 h-48 isolate">
@@ -160,18 +187,20 @@
 					</svg>
 				</a>
 
-        {#each visiblePages as pageNumber}
-          {#if pageNumber === '...'}
-            <span
-              class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0"
-            >...</span>
-          {:else}
-            <a
-              href={String(pageNumber)}
-              class={currentPage === pageNumber ? 'bg-soar relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-100 ring-1 ring-inset ring-gray-300 hover:bg-soar/80 focus:z-20 focus:outline-offset-0' : 'relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0'}
-            >{pageNumber}</a>
-          {/if}
-        {/each}
+        <span class="hidden md:block">
+            {#each visiblePages as pageNumber}
+              {#if pageNumber === '...'}
+                <span
+                  class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0"
+                >...</span>
+              {:else}
+                <a
+                  href={String(pageNumber)}
+                  class={currentPage === pageNumber ? 'bg-soar relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-100 ring-1 ring-inset ring-gray-300 hover:bg-soar/80 focus:z-20 focus:outline-offset-0' : 'relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0'}
+                >{pageNumber}</a>
+              {/if}
+            {/each}
+        </span>
 				<a
 					href={`${currentPage + 1}`}
 					class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"

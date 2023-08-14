@@ -27,6 +27,7 @@ export const load = async ({ fetch, params }) => {
   const endIndex = startIndex + limit;
 
   const res = await fetch('/api/getBillionaires');
+  // const res = await fetch(`/api/searchBillionaires?search=${params.search || ''}`);
   const data = await res.json();
   const billionaires = data.personList.personsLists;
   const totalBillionaires = billionaires.length;
