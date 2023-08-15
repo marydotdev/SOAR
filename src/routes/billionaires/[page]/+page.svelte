@@ -102,13 +102,13 @@
 		{#if billionaires}
 			<ul class="text-xl grid grid-cols-1 lg:grid-cols-2 px-2 py-12 gap-x-12 gap-y-12">
 				{#each billionaires as billionaire}
-					<a href={`/billionaire/${billionaire.person.uri}`} class="">
+					<a href={`/billionaire/${billionaire.person.uri}`}>
             <li class="max-w-2xl mx-auto bg-white hover:shadow-lg sm:hover:scale-[1.05] transition-all duration-200 ease-in-out">
               <div class="w-full h-full flex items-start gap-2">
                 <div class="flex justify-between">
-                  <div class="w-48 h-48 isolate">
+                  <div class="w-28 h-28 md:w-48 md:h-48 isolate">
                     <div class="absolute z-10">
-                      <p class="w-fit min-w-[3rem] h-12 text-center text-white drop-shadow-lg backdrop-brightness-50 text-4xl font-serif">{billionaire.rank}</p>
+                      <p class="w-fit min-w-[2rem] md:min-w-[3rem] h-8 md:h-12 text-center text-white drop-shadow-lg backdrop-brightness-50 text-xl md:text-4xl font-serif">{billionaire.rank}</p>
                     </div>
                     <div class="relative">
                       {#if billionaire.person.squareImage}
@@ -130,17 +130,17 @@
                           class="w-full"
                         />
                       {:else}
-                        <div class="w-48 h-48 bg-gray-900" />
+                        <div class="w-24 h-24 md:w-48 md:h-48 bg-gray-900" />
                       {/if}
                       </div>
                   </div>
                 </div>
-                <div class="w-full h-48 p-4 flex flex-col justify-between">
+                <div class="w-full md:h-48 p-2 md:p-4 flex flex-col justify-between">
                   <div class="w-full h-full flex justify-between">
                     <div>
-                      <h3 class="text-2xl">{billionaire.person.name}</h3>
-                      <p class="text-sm uppercase">{billionaire.source}</p>
-                      <p>
+                      <h3 class="text-lg md:text-2xl">{billionaire.person.name}</h3>
+                      <p class="text-xs md:text-sm uppercase">{billionaire.source}</p>
+                      <p class="text-base md:text-lg">
                         {#if (billionaire.city && billionaire.state)}
                           <span>{billionaire.city},</span>
                           {:else if (!billionaire.city)}
@@ -157,11 +157,11 @@
                     </div>
 
                     <div>
-                      <h3 class="text-2xl">{formatter.format(billionaire.finalWorth * 1000000)}</h3>
+                      <h3 class="text-sm md:text-2xl">{formatter.format(billionaire.finalWorth * 1000000)}</h3>
                     </div>
                   </div>
                   <div>
-                    <h3 class="text-right">{billionaire.countryOfCitizenship}</h3>
+                    <h3 class="text-xs md:text-sm text-right">{billionaire.countryOfCitizenship}</h3>
                   </div>
                   </div>
               </div>

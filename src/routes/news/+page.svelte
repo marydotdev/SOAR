@@ -39,17 +39,22 @@
 </script>
 
 <div class="max-w-6xl mx-auto px-4 py-12">
-  <div class="">
-    <h2 class="text-2xl font-bold">Recent Press</h2>
-  </div>
-  <div class="flex flex-col gap-8 pt-12">
+  <h2 class="text-2xl font-bold">Recent Press</h2>
+  <div class="flex flex-col lg:flex-row justify-between">
+    <div class="flex flex-col gap-8 pt-12">
     {#each newsLinks as news}
-    <a href={news.url} target="_blank">
-      <p class="text-xl">{news.title}</p>
-      <p>{news.source}</p>
-    </a>
-  {/each}
+      <a href={news.url} target="_blank">
+        <p class="text-xl">{news.title}</p>
+        <p>{news.source}</p>
+      </a>
+    {/each}
+    </div>
+
+    <div class="w-fit mt-12 ml-auto">
+      <img src="/threewhales.png" alt="Three orcas jumping majestically" class="grayscale opacity-70 transform -scale-x-100 rotate-12 "  />
+    </div>
   </div>
+
 </div>
 
 

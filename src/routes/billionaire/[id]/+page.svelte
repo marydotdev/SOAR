@@ -3,8 +3,7 @@
 	import { navigating } from '$app/stores';
 
 	const formatter = new Intl.NumberFormat('en', { notation: 'compact' });
-	// console.log($navigating?.from);
-  //console.log(data)
+
 	const backLink = $navigating?.from?.params.page || '1';
 </script>
 
